@@ -14,6 +14,9 @@ using SehirRehberi.API.Models;
 
 namespace SehirRehberi.API.Controllers
 {
+
+
+    [Route("api/Auth")]
     public class AuthController : Controller
     {
         private IAuthRepository _authRepository;
@@ -76,7 +79,7 @@ namespace SehirRehberi.API.Controllers
 
                 }),
                 Expires = DateTime.Now.AddDays(1),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha512)
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha512Signature)
             };
 
             var token = tokenHandler.CreateToken(tokenDescriptor);
